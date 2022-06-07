@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.jokerapp.R
 import com.example.jokerapp.databinding.ActivityMainBinding
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        installSplashScreen()
 
         setContentView(R.layout.activity_main)
 

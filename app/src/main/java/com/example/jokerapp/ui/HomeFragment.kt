@@ -4,42 +4,75 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jokerapp.R
+import com.example.jokerapp.data.CategoryRemoteDataSource
 import com.example.jokerapp.databinding.FragmentHomeBinding
 import com.example.jokerapp.model.Category
+import com.example.jokerapp.presentetaion.HomePresenter
 import com.xwray.groupie.GroupieAdapter
 
 class HomeFragment : Fragment() {
 
+    private lateinit var progressBar: ProgressBar
 
-       override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    private lateinit var mPrenseter: HomePresenter
+    private val mAdapter = GroupieAdapter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val dataSource = CategoryRemoteDataSource()
+        mPrenseter = HomePresenter(this,dataSource)
     }
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = inflater.inflate(R.layout.fragment_home, container, false)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        progressBar = view.findViewById(R.id.progress_bar)
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_main)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext()) /** requireContext() equivalente ao this na nossa Activity */
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        /** requireContext() equivalente ao this na nossa Activity */
 
-        val adapter = GroupieAdapter()
-        recyclerView.adapter = adapter
+        mPrenseter.findAllCategories()
 
-        adapter.add(CategoryItem(Category("Categoria 1",0xffface6e)))
-        adapter.add(CategoryItem(Category("Categoria 2",0xffface6f)))
-        adapter.add(CategoryItem(Category("Categoria 3",0xffface6)))
-        adapter.add(CategoryItem(Category("Categoria 4",0xffface6)))
+        recyclerView.adapter = mAdapter
+    }
 
+    fun showCategories(response: List<Category>) {
+        val categories = response.map { CategoryItem(it) }
+        mAdapter.addAll(categories)
+        mAdapter.notifyDataSetChanged()
+    }
 
-        adapter.notifyDataSetChanged()
+    fun showProgress() {
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
     }
+
+    fun hideProgress() {
+        progressBar.visibility = View.GONE
+    }
+
+    fun showFailure(message: String) {
+        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+    }
+
 }

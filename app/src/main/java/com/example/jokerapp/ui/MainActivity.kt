@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.jokerapp.R
-import com.example.jokerapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

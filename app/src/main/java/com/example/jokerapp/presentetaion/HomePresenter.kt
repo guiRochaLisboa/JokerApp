@@ -1,11 +1,9 @@
 package com.example.jokerapp.presentetaion
 
-import android.os.Handler
-import android.os.Looper
+
 import com.example.jokerapp.data.CategoryRemoteDataSource
 import com.example.jokerapp.data.ListCategoryCallback
 import com.example.jokerapp.model.Category
-import com.example.jokerapp.ui.CategoryItem
 import com.example.jokerapp.ui.HomeFragment
 
 class HomePresenter(private val view: HomeFragment,private val dataSource: CategoryRemoteDataSource) : ListCategoryCallback {

@@ -5,7 +5,7 @@ import android.graphics.Color
 import com.example.jokerapp.data.CategoryRemoteDataSource
 import com.example.jokerapp.data.ListCategoryCallback
 import com.example.jokerapp.model.Category
-import com.example.jokerapp.ui.view.HomeFragment
+import com.example.jokerapp.ui.HomeFragment
 
 class HomePresenter(private val view: HomeFragment, private val dataSource: CategoryRemoteDataSource) : ListCategoryCallback {
 

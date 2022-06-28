@@ -1,4 +1,4 @@
-package com.example.jokerapp.ui.view
+package com.example.jokerapp.ui
 
 import android.view.View
 import android.widget.LinearLayout

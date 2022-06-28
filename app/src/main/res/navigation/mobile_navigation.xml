@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.jokerapp.ui.view.HomeFragment"
+        android:name="com.example.jokerapp.ui.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/nav_joke"
-        android:name="com.example.jokerapp.ui.view.JokeFragment"
+        android:name="com.example.jokerapp.ui.JokeFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_joker" />
     <fragment

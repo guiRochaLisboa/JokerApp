@@ -6,14 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.example.jokerapp.BuildConfig
 import com.example.jokerapp.R
-import com.example.jokerapp.databinding.FragmentAboutBinding
+
 
 class AboutFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_about, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<TextView>(R.id.txt_version).text = getString(R.string.build_version, BuildConfig.VERSION_NAME)
     }
 
     override fun onDestroyView() {

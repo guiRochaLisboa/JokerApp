@@ -1,19 +1,18 @@
 package com.example.jokerapp.presentetaion
 
-
 import com.example.jokerapp.data.JokeCallback
 import com.example.jokerapp.data.JokeRemoteDataSource
 import com.example.jokerapp.model.Joke
-import com.example.jokerapp.ui.JokeFragment
+import com.example.jokerapp.ui.JokerDayFragment
 
-class JokePresenter(
-    private val view: JokeFragment,
+class JokeDayPresenter(
+    private val view: JokerDayFragment,
     private val dataSource: JokeRemoteDataSource = JokeRemoteDataSource()
 ) : JokeCallback {
 
-    fun findBy(categoryName : String){
+    fun findByJokeDay(){
         view.showProgress()
-        dataSource.findBy(categoryName,this)
+        dataSource.findByJokeDay(this)
     }
 
     override fun onSucess(response: Joke) {

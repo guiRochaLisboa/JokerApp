@@ -1,7 +1,6 @@
-package com.example.jokerapp.ui.view
+package com.example.jokerapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.jokerapp.R
 import com.example.jokerapp.model.Joke
-import com.example.jokerapp.presentetaion.HomePresenter
 import com.example.jokerapp.presentetaion.JokePresenter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.squareup.picasso.Picasso
 
 class JokeFragment : Fragment() {
 
@@ -46,6 +46,11 @@ class JokeFragment : Fragment() {
         activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName
         progressBar = view.findViewById(R.id.progress_bar)
         textView = view.findViewById(R.id.txt_joke)
+        imageView = view.findViewById(R.id.img_joke)
+
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            mPrenseter.findBy(categoryName)
+        }
 
 
         mPrenseter.findBy(categoryName)
@@ -53,7 +58,7 @@ class JokeFragment : Fragment() {
 
     fun showJoke(joke : Joke){
         textView.text = joke.text
-        //TODO : adicionar a imagem
+        Picasso.get().load(joke.iconUrl).into(imageView)
     }
 
     fun showProgress() {

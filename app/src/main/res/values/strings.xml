@@ -11,4 +11,7 @@
     <string name="menu_joker_day">Piada do dia</string>
     <string name="menu_about">Sobre</string>
     <string name="social">Social</string>
+    <string name="app_description">Carlos Ray Chuck Norris (nascido em 10 de março de 1940) é um ator e artista marcial americano. Ele é faixa preta em Tang Soo Do, jiu jitsu brasileiro e judô. Depois de servir na Força Aérea dos Estados Unidos, Norris ganhou muitos campeonatos de artes marciais e mais tarde fundou sua própria disciplina Chun Kuk Do.</string>
+    <string name="app_website">https://en.wikipedia.org/wiki/Chuck_Norris</string>
+    <string name="build_version">Versão (%1$s)</string>
 </resources>
